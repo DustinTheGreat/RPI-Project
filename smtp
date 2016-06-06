@@ -20,7 +20,7 @@ class Email():
             print('you couldnt login')
         self.s.sendmail("'"+email+"", "'"+recipient+"'", 'subject: hey! /n Hey how are you today?' )
 
-        self.s.quit()
+        s.quit()
 
 email = raw_input('please enter your email: ')
 password = raw_input('please enter your password: ')
