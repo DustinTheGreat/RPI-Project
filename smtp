@@ -2,26 +2,27 @@ import smtplib
 
 
 class Email():
-    email = raw_input('please enter your email: ')
-    password = raw_input('please enter your password: ')
-    recipient = raw_input('who are we sending this to? ')
-    x = 1
-
-    def __init__(self):
-        while (number) < 5:
-            try:
-                self.s = smtplib.SMTP('smtp.gmail.com', 587)
-            except:
-                print('hey this isnt working')
+    def __init__(self, email, password, recipient):
+        self.email  = email
+        self.password = password
+        self.recipient = recipient
+        try:
+            self.s = smtplib.SMTP('smtp.gmail.com', 587)
+        except:
+            print('hey this isnt working')
 
 
-            self.s.ehlo()
-            self.s.starttls()
-            try:
-                self.s.login(email, password)
-            except:
-                print('you couldnt login')
-            self.s.sendmail(email, recipient, 'subject: hey! /n Hey how are you today?' )
-            number += 1
-            self.s.quit()
-a = Email()
+        self.s.ehlo()
+        self.s.starttls()
+        try:
+            self.s.login(email, password)
+        except:
+            print('you couldnt login')
+        self.s.sendmail("'"+email+"", "'"+recipient+"'", 'subject: hey! /n Hey how are you today?' )
+
+        self.s.quit()
+
+email = raw_input('please enter your email: ')
+password = raw_input('please enter your password: ')
+recipient = raw_input('who are we sending this to? ')
+a = Email(email, password, recipient)
